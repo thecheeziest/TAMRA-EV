@@ -15,7 +15,7 @@ z-index:10000;position: absolute;width:100%;left: 0;top: 0;
         display: block;
         width: 163px;
         height: 42px;
-        background: url(https://www.tamraev.com/static/images/logo.png) no-repeat;
+        background: url(.../../../public/images/logo.png) no-repeat;
         img {display: none;}
         }
     }
