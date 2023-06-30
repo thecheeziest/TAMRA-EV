@@ -25,6 +25,7 @@ const TamraeveMain = ( ) => {
         setIsGb(gb); // 리스트 등급 설정
         setIsLine(title); // 밑줄 효과
         setViewCnt(6); // 카테고리 누를 때마다 view 6
+        setEmpty(false);
 
         if (gb === 'all') { // all 등급이면
             setShowData(dataList); // 전체 노출
@@ -70,7 +71,7 @@ const TamraeveMain = ( ) => {
             <TamraeveContainer>
                 <div className="category_menu">
                     <TamraeveCategory onCategory={onCategory} isLine={isLine} />
-                    <button className={`btn_search ${isSearch ? "on" : ""}`} onClick={onToggle}>
+                    <button className={`btn_search ${isSearch ? "on" : ""}`} onClick={() => onToggle(setEmpty(false))}>
                         { isSearch ? "닫기" : "검색" }
                     </button>
                     <TamraeveSearch isSearch={isSearch} onSearch={onSearch} />
