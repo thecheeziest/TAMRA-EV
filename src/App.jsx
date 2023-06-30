@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import './assets/css/reset.css';
 import Layout from './pages/Layout';
 import Home from './pages/Home';
@@ -14,7 +15,8 @@ import Privacy from './pages/Privacy';
 const App = () => {
     return (
         <>
-        <BrowserRouter>
+        {/* <BrowserRouter> */}
+        <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={ <Home />} />
@@ -28,7 +30,8 @@ const App = () => {
                     <Route path="/privacy" element={<Privacy />} />
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </Router>
+        {/* </BrowserRouter> */}
         </>
     );
 };
