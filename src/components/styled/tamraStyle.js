@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // TamraeveWrap
 export const TamraeveWrap = styled.div`
 overflow:hidden; position:relative; width:100%; min-width:1280px; max-width:1920px; margin:0 auto; user-select: none;
-.list_empty {width:100%; color:#999; font-size:25px; text-align:center; padding:100px 0}
+.list_empty {width:100%; color:#999; font-size:25px; text-align:center; padding:100px 0; display: none; &.on {display: block}}
 `
 
 // TamraeveHeaders
@@ -257,6 +257,8 @@ export const TamraeveMains = styled.main`
         color: #666;
         font-size: 18px;
         padding: 10px 0;
+        display: none;
+        &.on { display: block }
     }
     .contents_list {
         margin-top: 50px;
@@ -742,6 +744,9 @@ p.sub_tit {
         line-height: 30px;
         color: #666;
     }
+    .slide_box {
+        text-align: center;
+    }
 }
 `
 
@@ -1019,6 +1024,7 @@ export const TamraevePrivacyPg = styled.div`
 export const TamraeveElectronicListPg = styled.div`
 padding-top: 130px;
 box-sizing: border-box;
+position: relative;
 h2 {
     font-size: 40px;
     text-align: center;
@@ -1030,11 +1036,13 @@ h3 {
     margin-top: 20px;
     margin-bottom: 50px;
 }
-.location_area {
+.bg_area {
     width: 100%;
     height: 600px;
-    box-sizing: border-box;
-    background: #ededed;
+    background: #f6f3f2;
+    position: absolute;
+    top: 50%; left: 0;
+    z-index: -100;
     p {
         font-size: 50px;
         color: #999;
@@ -1042,5 +1050,18 @@ h3 {
         line-height: 600px;
     }
 }
+`
 
+// TamraeveMapBox
+export const TamraeveMapBox = styled.div`
+width: 1100px;
+height: 800px;
+padding-top: 20px;
+
+margin: auto;
+#map {
+    width: 1100px;
+    height: 650px;
+    border: 3px solid #007fa8;
+}
 `

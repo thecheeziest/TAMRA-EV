@@ -1,6 +1,6 @@
 import React from 'react';
 import { TamraeveModalBox } from '../../styled/tamraStyle';
-import TamraeveModalItem from './TamraeveModalItem';
+import TamraeveModalItem from './TamraevModalItem';
 
 const TamraeveModal = ( {showData, isModal, onModal, onLike, isLike} ) => {
     return (

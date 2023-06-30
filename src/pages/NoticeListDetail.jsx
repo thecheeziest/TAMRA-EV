@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { TamraeveNoticeDetailCon } from '../components/styled/tamraStyle';
-import notiData from '../components/tamraeve/Tamraeve/notiData';
+import notiData from '../components/tamraeve/Tamraev/notiData';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import "swiper/css";

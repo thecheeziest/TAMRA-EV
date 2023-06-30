@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { TamraeveCateMenu } from '../../styled/tamraStyle';
-import { categoryMenu } from '../Tamraeve/dataMenu';
+import { categoryMenu } from '../Tamraev/dataMenu';
 
 const TamraeveCategory = ( {onCategory, isLine} ) => {
     

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TamraeveNavBox } from '../../styled/tamraStyle';
 import { Link } from "react-router-dom";
-import { navMenu } from '../Tamraeve/dataMenu';
+import { navMenu } from '../Tamraev/dataMenu';
 
 const TamraeveNav = ( {onChk} ) => {
 

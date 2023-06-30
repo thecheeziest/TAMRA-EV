@@ -10,6 +10,7 @@ import NoticeList from './pages/NoticeList';
 import NoticeListDetail from './pages/NoticeListDetail';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
+import { TamraevTop } from './components/tamraeve/Tamraev/TamraevTop';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <>
         {/* <BrowserRouter> */}
         <Router>
+            <TamraevTop />
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={ <Home />} />

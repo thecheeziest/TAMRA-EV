@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { TamraeveContainer, TamraeveLoadingBox } from '../../styled/tamraStyle';
-import TamraeveCategory from '../TamraeveList/TamraeveCategory';
-import TamraeveSearch from '../TamraeveForm/TamraeveSearch';
-import TamraeveCardList from '../TamraeveList/TamraeveCardList';
+import TamraeveCategory from '../TamraevList/TamraevCategory';
+import TamraeveSearch from '../TamraevForm/TamraevSearch';
+import TamraeveCardList from '../TamraevList/TamraevCardList';
 import { useAxios } from '../../../hooks/useAxios';
 import { useToggle } from '../../../hooks/useToggle';
-import TamraeveModal from '../TamraeveModal/TamraeveModal';
+import TamraeveModal from '../TamraevModal/TamraevModal';
 
 const TamraeveMain = ( ) => {
     const {data, loading, error} = useAxios('https://gist.githubusercontent.com/thecheeziest/76442bceea8be8e7c5ff67a6485b23cf/raw/88dec448d6da4847d40b32076b2c89a066d18b9b/tamraeve.json');
@@ -19,6 +19,7 @@ const TamraeveMain = ( ) => {
     const [viewCnt, setViewCnt] = useState(6);
     const [isModal, setIsModal] = useState(false);
     const [isLike, setIsLike] = useState(false);
+    const [empty, setEmpty] = useState(false);
 
     const onCategory = (gb, title) => { // 카테고리 메뉴
         setIsGb(gb); // 리스트 등급 설정
@@ -26,7 +27,7 @@ const TamraeveMain = ( ) => {
         setViewCnt(6); // 카테고리 누를 때마다 view 6
 
         if (gb === 'all') { // all 등급이면
-            setShowData([]); // 전체 노출
+            setShowData(dataList); // 전체 노출
         } else { // 등급에 맞는 것만 노출
             setShowData(dataList.filter(item => item.card_gb === gb));
         }
@@ -43,12 +44,11 @@ const TamraeveMain = ( ) => {
     }
 
     const onSearch = text => { // 검색 기능
-        console.log(text);
-        console.log(showData);
-        setShowData(dataList.filter( item =>
+        const filteredData = dataList.filter( item =>
             item.title.includes(text.trim()) || // 타이틀 중에서 검색
-            item.og_desc.includes(text.trim()) // 설명 중에서 검색
-            ));
+            item.og_desc.includes(text.trim()) ); // 설명 중에서 검색
+        setShowData(filteredData.length > 0 ? filteredData : []);
+        setEmpty(filteredData.length > 0 ? false : true);
         setIsLine('');
     }
 
@@ -77,8 +77,8 @@ const TamraeveMain = ( ) => {
                 </div>
 
                 <div className="contents_list">
-                    <p className="total_count" style={{display: 'none'}}>검색 결과 (<span>999</span>)</p>
-                    <TamraeveCardList viewCnt={viewCnt} showData={showData} dataList={dataList} onModal={onModal} />
+                    <p className="total_count on">검색 결과 (<span>{showData.length}</span>)</p>
+                    <TamraeveCardList viewCnt={viewCnt} showData={showData} dataList={dataList} onModal={onModal} empty={empty} />
                 </div>
                 <button class="btn_more" onClick={onView}>더보기</button>
                 <TamraeveModal showData={showData} isModal={isModal} onModal={onModal} onLike={onLike} isLike={isLike} />

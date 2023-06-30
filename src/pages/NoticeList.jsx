@@ -1,7 +1,7 @@
 import React from 'react';
 import { TamraeveLoadingBox, TamraeveNoticePage } from '../components/styled/tamraStyle';
 import { useAxios } from '../hooks/useAxios';
-import TamraeveNoticeItem from '../components/tamraeve/TamraeveNotice/TamraeveNoticeItem';
+import TamraeveNoticeItem from '../components/tamraeve/TamraevNotice/TamraevNoticeItem';
 
 const NoticeList = () => {
     const {data, loading, error} = useAxios('https://gist.githubusercontent.com/thecheeziest/62c72d525efb9061bd34519f7d178eea/raw/0403ba9baac9debe795979d881945d18dbb43dc2/tamraeveNotice.json');

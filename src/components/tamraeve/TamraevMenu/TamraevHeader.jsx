@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { TamraeveHeaders } from '../../styled/tamraStyle';
-import TamraeveNav from './TamraeveNav';
+import TamraeveNav from './TamraevNav';
 
 const TamraeveHeader = ({state, isBlue, onBtn, onChk}) => {
 

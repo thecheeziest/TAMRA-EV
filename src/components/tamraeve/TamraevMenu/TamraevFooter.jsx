@@ -1,5 +1,5 @@
 import React from 'react';
-import { footerMenu } from '../Tamraeve/dataMenu';
+import { footerMenu } from '../Tamraev/dataMenu';
 import { Link } from "react-router-dom";
 import { TamraeveFooters } from '../../styled/tamraStyle';
 

@@ -1,6 +1,6 @@
 import { TamraeveMains } from "../components/styled/tamraStyle";
-import TamraeveSwiper from "../components/tamraeve/Tamraeve/TamraeveSwiper";
-import TamraeveMain from "../components/tamraeve/Tamraeve/TamraeveMain";
+import TamraeveSwiper from "../components/tamraeve/Tamraev/TamraevSwiper";
+import TamraeveMain from "../components/tamraeve/Tamraev/TamraevMain";
 
 const Home = () => {
     return (
