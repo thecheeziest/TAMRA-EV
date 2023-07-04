@@ -8,10 +8,11 @@ import { useToggle } from '../../../hooks/useToggle';
 import TamraeveModal from '../TamraevModal/TamraevModal';
 
 const TamraeveMain = ( ) => {
-    const {data, loading, error} = useAxios('https://gist.githubusercontent.com/thecheeziest/76442bceea8be8e7c5ff67a6485b23cf/raw/88dec448d6da4847d40b32076b2c89a066d18b9b/tamraeve.json');
+    const {data, loading, error} = useAxios('https://gist.githubusercontent.com/thecheeziest/76442bceea8be8e7c5ff67a6485b23cf/raw/7eb3b241f2bfdc33e835fbd51a8f6846d2d51401/tamraeve.json');
     const [dataList, setDataList] = useState([]);
     const [showData, setShowData] = useState([]);
-    useEffect(() => { setDataList(data); setShowData(data) }, [data]); // dataList에 저장
+    const [showModal, setShowModal] = useState([]);
+    useEffect(() => { setDataList(data); setShowData(data); setShowModal(data) }, [data]); // dataList에 저장
 
     const {state: isSearch, onToggle} = useToggle(false); // 검색 버튼 토글
     const [isLine, setIsLine] = useState('인기 콘텐츠');
@@ -54,14 +55,14 @@ const TamraeveMain = ( ) => {
     }
 
     const onModal = id => { // 모달 오픈
-        setShowData(dataList.filter(item => item.card_id === id));
+        setShowModal(dataList.filter(item => item.card_id === id));
         setIsModal(!isModal);
+        setIsLike(false);
     }
 
-    const onLike = id => {
-        setIsLike(!isLike); // true가 됨
-        setShowData(showData.map(item => item.card_id === id ? isLike ? {...item, star_cnt: item.star_cnt - 1} : {...item, star_cnt: item.star_cnt + 1} : item ));
-        console.log(showData)
+    const onLike = id => { // 좋아요 누르면
+        setIsLike(!isLike);
+        setShowModal(showModal.map(item => item.card_id === id ? isLike === true ? {...item, star_cnt: item.star_cnt - 1, star_show: false} : {...item, star_cnt: item.star_cnt + 1, star_show: true} : item ));
     }
 
     return (
@@ -82,7 +83,7 @@ const TamraeveMain = ( ) => {
                     <TamraeveCardList viewCnt={viewCnt} showData={showData} dataList={dataList} onModal={onModal} empty={empty} />
                 </div>
                 <button class="btn_more" onClick={onView}>더보기</button>
-                <TamraeveModal showData={showData} isModal={isModal} onModal={onModal} onLike={onLike} isLike={isLike} />
+                <TamraeveModal showModal={showModal} isModal={isModal} onModal={onModal} onLike={onLike} />
             </TamraeveContainer>
             : <TamraeveLoadingBox></TamraeveLoadingBox>
         }

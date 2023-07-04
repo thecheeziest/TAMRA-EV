@@ -2,12 +2,12 @@ import React from 'react';
 import { TamraeveModalBox } from '../../styled/tamraStyle';
 import TamraeveModalItem from './TamraevModalItem';
 
-const TamraeveModal = ( {showData, isModal, onModal, onLike, isLike} ) => {
+const TamraeveModal = ( {showModal, isModal, onModal, onLike} ) => {
     return (
         <TamraeveModalBox className={isModal ? "on" : ""}>
             <div className="bg"></div>
             {
-                showData.map(item => <TamraeveModalItem key={item.card_id} item={item} onModal={onModal} onLike={onLike} isLike={isLike} />)
+                showModal.map(item => <TamraeveModalItem key={item.card_id} item={item} onModal={onModal} onLike={onLike} />)
             }
         </TamraeveModalBox>
     );

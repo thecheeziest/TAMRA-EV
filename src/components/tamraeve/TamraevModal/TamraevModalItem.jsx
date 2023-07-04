@@ -5,16 +5,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const TamraeveModalItem = ( {item, onModal, onLike, isLike} ) => {
-    const {card_id, title, star_cnt, hash_tag, media_url, youtube_url} = item;
+const TamraeveModalItem = ( {item, onModal, onLike} ) => {
+    const {card_id, title, star_cnt, star_show, hash_tag, media_url, youtube_url} = item;
     const media = media_url.split(',');
     const tags = hash_tag.split(',');
-
-    const snsUrl = location.href;
-
-    const onNaver = () => {
-
-    }
 
     return (
         <div className="layer_popup">
@@ -40,7 +34,7 @@ const TamraeveModalItem = ( {item, onModal, onLike, isLike} ) => {
                     <p className="tit1">슬기로운 전기차 여행</p>
                     <p className="tit2">{title}</p>
                     <div className="icon_like">
-                        <button className={`like ${isLike ? "play" : ""}`} onClick={() => onLike(card_id)}>좋아요!</button>
+                        <button className={`like ${star_show ? "play" : ""}`} onClick={() => onLike(card_id)}>좋아요!</button>
                         <span className="count">{star_cnt}</span>
                     </div>
                     <div className="sns_share">
@@ -58,7 +52,7 @@ const TamraeveModalItem = ( {item, onModal, onLike, isLike} ) => {
                     </div>
                 </div>
             </div>
-            <button className='close' onClick={() => onModal(false)}><i className='xi-close'></i></button>
+            <button className='close' onClick={onModal}><i className='xi-close'></i></button>
         </div>
     );
 };
